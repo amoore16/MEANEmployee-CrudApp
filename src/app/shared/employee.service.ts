@@ -11,6 +11,16 @@ import { Employee } from './employee.model';
 export class EmployeeService {
   selectedEmployee: Employee;
   employees: Employee[];
+  readonly baseURL = 'http://localhost:1337/employees';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  postEmployee(emp : Employee) {
+    return this.http.post(this.baseURL, emp);
+  }
+
+  getEmployeeList() {
+    return this.http.get(this.baseURL);
+  }
+
 }
